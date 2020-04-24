@@ -21,11 +21,11 @@
             $campos = array();
 
             if($nombre == ""){
-                array_push($campos, "El Nombre no puede estar vacío");
+                array_push($campos, "Nombre no puede estar vacío");
             }
 
             if($password == "" || strlen($password) < 6){
-                array_push($campos, "El Password no puede estar vacío ni puede tener menos de 6 caracteres");
+                array_push($campos, "Password no puede estar vacío ni tener menos de 6 caracteres");
             }
 
             if($email == "" || strpos($email,"@") === false){
