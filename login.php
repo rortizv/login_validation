@@ -18,6 +18,7 @@
             $email = "";
             $pais = "";
             $nivel = "";
+            $lenguajes = array();
 
             if(isset($_POST['nombre'])){
                 $nombre = $_POST['nombre'];
@@ -29,6 +30,12 @@
                 $nivel = $_POST['nivel'];
             }else{
                 $nivel = "";
+            }
+
+            if(isset($_POST['lenguajes'])){
+                $lenguajes = $_POST['lenguajes'];
+            }else{
+                $lenguajes = [];
             }
 
             $campos = array();
@@ -51,6 +58,10 @@
 
             if($nivel == ""){
                 array_push($campos, "Selecciona un nivel de desarrollo");
+            }
+
+            if($lenguajes == "" || count($lenguajes) < 2){
+                array_push($campos, "Selecciona al menos dos (2) lenguajes de programación");
             }
 
             if(count($campos) > 0){
@@ -94,7 +105,7 @@
             <br>
 
             <div>
-                <h5>Nivel de desarrollador: </h5>
+                <h5>Nivel de desarrollador:</h5>
                 <input type="radio" name="nivel" value="entry_level"
                     <?php if($nivel == "entry_level") echo "checked"; ?>>Entry level
                 <input type="radio" name="nivel" value="junior" <?php if($nivel == "junior") echo "checked"; ?>>Junior
@@ -103,6 +114,17 @@
                     <?php if($nivel == "arquitect") echo "checked"; ?>>Arquitecto
             </div>
             <br>
+
+            <div>
+                <h5>Lenguajes de programación:</h5>
+                <input type="checkbox" name="lenguajes[]" value="js" <?php if(in_array("js", $lenguajes)) echo "checked"; ?>>JavaScript<br>
+                <input type="checkbox" name="lenguajes[]" value="php" <?php if(in_array("php", $lenguajes)) echo "checked"; ?>>PHP<br>
+                <input type="checkbox" name="lenguajes[]" value="java" <?php if(in_array("java", $lenguajes)) echo "checked"; ?>>Java<br>
+                <input type="checkbox" name="lenguajes[]" value="dart" <?php if(in_array("dart", $lenguajes)) echo "checked"; ?>>Dart<br>
+                <input type="checkbox" name="lenguajes[]" value="c" <?php if(in_array("c", $lenguajes)) echo "checked"; ?>>C<br>
+            </div>
+            <br>
+
             <div>
                 <input id="submit" type="submit" value="Enviar datos">
             </div>
