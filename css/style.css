@@ -14,6 +14,7 @@ form{
     -moz-border-radius: 8px;
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
+    border: 5px solid black;
 }
 
 input[type=text], input[type=password]{
